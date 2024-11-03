@@ -1,0 +1,1241 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+Убираем внутренние отступы слева тегам списков,
+у которых есть атрибут class
+ */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+Убираем внешние отступы body и двум другим тегам,
+у которых есть атрибут class
+ */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+Убираем внешние отступы вертикали нужным тегам,
+у которых есть атрибут class
+ */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+Убираем стандартный маркер маркированному списку,
+у которого есть атрибут class
+ */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+Обнуляем вертикальные внешние отступы параграфа,
+объявляем локальную переменную для внешнего отступа вниз,
+чтобы избежать взаимодействие с более сложным селектором
+ */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+Внешний отступ вниз для параграфа без атрибута class,
+который расположен не последним среди своих соседних элементов
+ */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+Упрощаем работу с изображениями
+ */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+Наследуем свойства шрифт для полей ввода
+ */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  height: 100%;
+}
+
+/**
+Плавный скролл
+ */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+    Пригодится в большинстве ситуаций
+    (когда, например, нужно будет "прижать" футер к низу сайта)
+   */
+  min-height: 100%;
+  /**
+    Унифицированный интерлиньяж
+   */
+  line-height: 1.5;
+}
+
+/**
+Приводим к единому цвету svg-элементы
+ */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+ */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+Удаляем все анимации и переходы для людей,
+которые предпочитают их не использовать
+ */
+/*--------------------*/
+@font-face {
+  font-family: "Heebo";
+  src: url("../fonts/Heebo-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Heebo";
+  src: url("../../fonts/Heebo-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Yantramanav";
+  src: url("../../fonts/Yantramanav-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --color-dark: #000000;
+  --color-dark-alternate:#131619;
+  --color-light: #fff;
+  --color-dark-grey: #404040;
+  --color-light-grey: #C4C4C4;
+  --border-radius: 30px;
+  --border: 1px solid var(--color-light);
+  --font-family-base: "Heebo", sans-serif;
+  --font-family-accent: "Yantramanav", sans-serif;
+  --input-height: 54px;
+  --container-width: 1300px;
+  --container-padding-x: 15px;
+  --transition-duration: 0.2s;
+  --header-height: 90px;
+}
+
+body {
+  background-color: var(--color-dark);
+  font-family: var(--font-family-base);
+  color: var(--color-light-grey);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin: 0 auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.container-wide {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+a {
+  color: var(--color-light);
+}
+
+a:hover {
+  color: var(--color-light-grey);
+}
+
+a, button, input, textarea, svg * {
+  transition-duration: var(--transition-duration);
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+.button {
+  display: inline-flex;
+  height: 38px;
+  align-items: center;
+  border-radius: 30px;
+  padding: 0 26px 0 26px;
+  font-weight: 700;
+  line-height: 200%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background-color: var(--color-light);
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: var(--color-light-grey);
+}
+
+.title-medium {
+  font-weight: 700;
+  font-size: clamp(20px, 2.08vw, 40px);
+  line-height: 130%;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.section-description {
+  font-weight: 300;
+  font-size: clamp(14px, 1.0416666667vw, 20px);
+  line-height: 165%;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.header {
+  background-color: var(--color-dark-alternate);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  padding: 0 32px 0 32px;
+  min-height: var(--header-height);
+}
+.header__logo {
+  flex-shrink: 0;
+}
+.header__menu-list {
+  display: flex;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  flex-wrap: wrap;
+}
+.header__menu-link {
+  display: inline-flex;
+  height: var(--header-height);
+  align-items: center;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.1em;
+  -moz-column-gap: 7px;
+       column-gap: 7px;
+}
+.header__actions {
+  display: flex;
+  gap: 0 40px;
+}
+.header__burger-button {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 4px;
+  width: 40px;
+  aspect-ratio: 1;
+  padding: 0 0 0 8px;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  border: var(--border);
+  border-radius: 50%;
+}
+.header__burger-button:hover {
+  border-color: var(--color-light-grey);
+  color: var(--color-light-grey);
+}
+.header__burger-button-line {
+  top: 5px;
+  left: 5px;
+  width: 5.5px;
+  height: 1px;
+  background-color: currentColor;
+  box-shadow: 16px 0 0 var(--color-light);
+}
+
+.is-current::after {
+  content: "";
+  height: 5px;
+  aspect-ratio: 1;
+  background-color: var(--color-light);
+  border-radius: 50%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 36px 70px;
+  min-height: calc(100vh - var(--header-height));
+  color: var(--color-light);
+  background-color: var(--color-dark-alternate);
+}
+.banner__body {
+  text-transform: uppercase;
+}
+.banner__info {
+  display: flex;
+  align-items: end;
+  font-weight: 700;
+  font-size: clamp(16px, 1.56vw, 30px);
+  line-height: 127%;
+}
+.banner__info::before {
+  content: "";
+  width: clamp(60px, 194px, 10.1vw);
+  aspect-ratio: 1;
+  margin: 0 30px 0 0;
+  background: url("/kropp-fitness/img/arrow-light.svg") center/contain no-repeat;
+}
+.banner__title {
+  font-weight: 700;
+  font-size: min(18.75vw, 360px);
+  line-height: 1;
+}
+.banner__pagination-list {
+  display: flex;
+  justify-content: center;
+}
+.banner__pagination-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  padding: 7px;
+}
+.banner__pagination-btn::after {
+  content: "";
+  border-radius: 50%;
+  border: var(--border);
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  transition-duration: var(--transition-duration);
+}
+.banner__pagination-btn:not(.btn-light):hover::after {
+  border-color: var(--color-light-grey);
+}
+
+.btn-light::after {
+  background-color: var(--color-light);
+  border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 20px 15px 0 15px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+  .header__menu {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .header__menu-link {
+    height: 50px;
+  }
+  .banner {
+    row-gap: 20px;
+    padding: 36px 15px;
+  }
+}
+@media (max-width: 767px) {
+  .button {
+    padding: 0 18px 0 18px;
+  }
+  .header {
+    padding: 10px 10px 0 10px;
+  }
+  .header__menu-list {
+    -moz-column-gap: 24px;
+         column-gap: 24px;
+  }
+  .header__menu-link {
+    height: 32px;
+  }
+  .header__actions {
+    -moz-column-gap: 15px;
+         column-gap: 15px;
+  }
+  .banner__info {
+    margin: 0 0 5px 0;
+  }
+  .banner__info::before {
+    margin: 0 10px 0px 0;
+  }
+}
+.motivation__item:nth-child(even) {
+  background-color: var(--color-dark-alternate);
+}
+.motivation__item:nth-child(even) .motivation-card {
+  flex-direction: row-reverse;
+}
+
+.motivation-card {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 0 clamp(30px, 10.42vw, 200px);
+}
+.motivation-card__body {
+  padding: 0 0 0 35px;
+}
+.motivation-card__title {
+  margin: 0 0 13px 0;
+}
+.motivation-card__description {
+  max-width: 400px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 175%;
+  letter-spacing: 0.05em;
+  color: #c4c4c4;
+  margin: 0 0 35px 0;
+}
+.motivation-card__image {
+  margin-block: -60px -60px;
+}
+.motivation-card__image-last {
+  margin-block: -60px 0px;
+}
+
+.transparent {
+  position: relative;
+  height: 54px;
+  display: inline-flex;
+  font-size: 13px;
+  background-color: transparent;
+  padding: 0 80px 0 30px;
+  color: var(--color-light);
+  border: var(--border);
+}
+.transparent::after {
+  content: "";
+  right: 0;
+  top: 0;
+  background: url("/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg") center/70% no-repeat;
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1;
+  border: var(--border);
+  border-radius: 50%;
+}
+.transparent:hover {
+  color: var(--color-dark);
+  background-color: var(--color-light-grey);
+}
+
+.backdrop-title {
+  position: relative;
+  z-index: 2;
+}
+.backdrop-title::before {
+  content: "";
+  position: absolute;
+  right: calc(100% + 8px);
+  display: block;
+  width: 26px;
+  aspect-ratio: 1;
+  background: url("/kropp-fitness/img/motivation/plus.svg") center/contain no-repeat;
+}
+.backdrop-title::after {
+  content: attr(data-title);
+  position: absolute;
+  z-index: -1;
+  font-family: "Yantramanav", sans-serif;
+  font-weight: 700;
+  font-size: 2.8em;
+  color: transparent;
+  top: -0.3em;
+  left: -0.6em;
+  -webkit-text-stroke: 1px var(--color-dark-grey);
+  text-stroke: 1px var(--color-dark-grey);
+  line-height: 1;
+}
+
+@media (max-width: 1919px) {
+  .motivation-card__image {
+    margin-block: -20px;
+  }
+}
+@media (max-width: 1024px) {
+  .motivation-card {
+    padding-block: 50px;
+  }
+  .motivation-card__image {
+    max-width: 50%;
+    height: auto;
+    margin-block: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .motivation__item:nth-child(even) .motivation-card {
+    flex-direction: column-reverse;
+  }
+  .motivation-card, .motivation__item:nth-child(even) .motivation-card {
+    flex-direction: column-reverse;
+    padding: 30px 0;
+    gap: 30px 0;
+  }
+  .motivation-card__description, .motivation__item:nth-child(even) .motivation-card__description {
+    margin: 0 0 20px 0;
+  }
+  .motivation-card__image, .motivation__item:nth-child(even) .motivation-card__image {
+    max-width: 60%;
+  }
+}
+.training-types {
+  padding: 160px 90px 120px 90px;
+  position: relative;
+  background-color: var(--color-dark);
+}
+.training-types__list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 60px;
+}
+.training-types__item {
+  --trainingTypesItemBgIconSize: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px 0px;
+  background: url("/kropp-fitness/img/training-types/arrow.svg") 100% 0/var(--trainingTypesItemBgIconSize) no-repeat;
+  padding: var(--trainingTypesItemBgIconSize) 0 0 0;
+}
+.training-types__title {
+  font-size: 16px;
+  line-height: 175%;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1280px) {
+  .training-types__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .training-types {
+    padding: 100px 50px 100px 50px;
+  }
+  .training-types__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .training-types__item {
+    gap: 20px 0;
+    --trainingTypesItemBgIconSize: 50px;
+  }
+  .training-types__image {
+    max-width: 120px;
+  }
+}
+.join-us {
+  background-color: var(--color-dark-alternate);
+}
+.join-us__video-wrapper {
+  background: url("/kropp-fitness/img/join-us/join-us-background.jpg") center/cover no-repeat var(--color-dark-alternate);
+  padding: 7.8vw 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.join-us__video {
+  width: 960px;
+  max-width: 100%;
+  height: auto;
+}
+.join-us__video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: clamp(50px, 10.41vw, 200px);
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px 4px;
+  border-radius: 50%;
+  border: var(--border);
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-light);
+  text-transform: uppercase;
+}
+.join-us__video-play-button::after {
+  content: "";
+  width: 26px;
+  aspect-ratio: 1;
+  background: url("/kropp-fitness/img/join-us/join-arrow.svg") center/contain no-repeat;
+  transition-duration: var(--transition-duration);
+}
+.join-us__video-play-button:hover {
+  background-color: var(--color-light-grey);
+  color: var(--color-dark);
+}
+.join-us__video-play-button:hover::after {
+  filter: invert(1);
+}
+.join-us__title {
+  position: relative;
+  margin: -0.4em 0 130px 0;
+  font-size: clamp(64px, 9.37vw, 180px);
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+}
+.join-us__title::after {
+  display: inline-block;
+  content: "";
+  height: 0.7em;
+  aspect-ratio: 1;
+  background: url("/kropp-fitness/img/join-us/vector2.svg") center/contain no-repeat;
+  margin: 0 0 0 0.14em;
+}
+.join-us__form {
+  padding: 0 0 150px 0;
+}
+.join-us__form-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px 0;
+}
+.join-us__form-header:not(:last-child) {
+  margin: 0 0 52px 0;
+}
+.join-us__form-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+.join-us__form-input {
+  max-width: 400px;
+}
+.join-us__form-button.transparent {
+  position: relative;
+  height: 54px;
+  display: inline-flex;
+  font-size: 13px;
+  background-color: transparent;
+  padding: 0 80px 0 30px;
+  color: var(--color-light);
+  border: var(--border);
+}
+.join-us__form-button.transparent::after {
+  content: "";
+  right: 0;
+  top: 0;
+  background: url("/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg") center/70% no-repeat;
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1;
+  border: var(--border);
+  border-radius: 50%;
+}
+.join-us__form-button.transparent:hover {
+  color: var(--color-dark);
+  background-color: var(--color-light-grey);
+}
+
+.title-big {
+  font-weight: 700;
+  font-size: clamp(24px, 3.12vw, 60px);
+  line-height: 120%;
+  text-transform: uppercase;
+}
+
+.backdrop-title.centered::after {
+  left: 50%;
+  translate: -50% 0;
+  top: -0.25em;
+}
+
+.input {
+  background-color: transparent;
+  border: 1px solid var(--color-dark-grey);
+  border-radius: var(--border-radius);
+  height: var(--input-height);
+  padding: 0 25px;
+  width: 100%;
+  color: var(--color-light);
+}
+.input::-moz-placeholder {
+  color: var(--color-light-grey);
+}
+.input::placeholder {
+  color: var(--color-light-grey);
+}
+.input:hover {
+  border-color: var(--color-light);
+}
+.input:focus {
+  background-color: var(--color-light-grey);
+  color: var(--color-dark);
+  outline: none;
+}
+
+select.input:invalid {
+  color: var(--color-light-grey);
+}
+
+@media (width <= 1024px) {
+  .join-us__form {
+    padding: 0 0 80px 0;
+  }
+  .join-us__title {
+    margin: -0.4em 0 80px 0;
+  }
+}
+@media (width <= 767px) {
+  .join-us__title {
+    margin: -0.4em 0 40px 0;
+  }
+  .join-us__form-body {
+    flex-direction: column;
+    gap: 20px 0;
+  }
+}
+.location {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.location__image {
+  height: auto;
+}
+.location__body {
+  padding: 80px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.location__title {
+  text-align: center;
+}
+.location__title:not(:last-child) {
+  margin: 0 0 14px 0;
+}
+.location__desctiption {
+  text-align: center;
+  max-width: 490px;
+}
+.location__desctiption:not(:last-child) {
+  margin: 0 0 clamp(20px, 1.92vw, 37px) 0;
+}
+@media (width <= 1024px) {
+  .location {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+@media (width <= 767px) {
+  .location__body {
+    padding: 40px 15px;
+  }
+}
+.family {
+  background-color: var(--color-dark-alternate);
+}
+.family__header {
+  padding: 132px 0 62px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 7px 0;
+}
+.family__body {
+  display: flex;
+  justify-content: center;
+  gap: 0 26px;
+  scroll-snap-type: x mandatory;
+  overflow-x: scroll;
+}
+.family__image {
+  scroll-snap-align: start;
+}
+
+@media (width <= 1024px) {
+  .family__image {
+    height: 360px;
+  }
+}
+@media (width <= 767px) {
+  .family__header {
+    padding: 80px 0 50px 0;
+  }
+  .family__body {
+    gap: 0 12px;
+  }
+  .family__image {
+    height: 180px;
+  }
+}
+.calculate {
+  background-color: var(--color-dark-alternate);
+  padding: 146PX 0 146PX 0;
+}
+.calculate__body {
+  max-width: 627px;
+  flex-grow: 1;
+}
+.calculate__title:not(:last-child) {
+  margin: 0 0 16px 0;
+}
+.calculate__description {
+  max-width: 385px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 175%;
+  letter-spacing: 0.05em;
+  color: var(--color-light-grey);
+}
+.calculate__description:not(:last-child) {
+  margin: 0 0 31px 0;
+}
+.calculate__table-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 610px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calculate__table-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: var(--color-dark);
+  border-radius: 50%;
+}
+
+.calculate-inner {
+  display: flex;
+  align-items: center;
+  gap: 0 36px;
+}
+
+.calculate-form__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 30px;
+}
+.calculate-form__body:not(:last-child) {
+  margin: 0 0 26px 0;
+}
+.calculate-form__input.wide {
+  grid-column: -1/1;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.calculate-table {
+  position: relative;
+  border-collapse: collapse;
+}
+.calculate-table th {
+  padding: 21px 30px 17px 0;
+  -moz-text-align-last: left;
+       text-align-last: left;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+.calculate-table th:not(:first-child) {
+  padding: 14px 30px 14px 30px;
+}
+.calculate-table td {
+  padding: 14px 30px 14px 0;
+}
+.calculate-table td:not(:first-child) {
+  padding: 14px 30px 14px 30px;
+}
+.calculate-table tfoot td {
+  padding: 33px 0 30px 0;
+  color: var(--color-light);
+}
+.calculate-table :is(td, th):not(:last-child) {
+  border-right: 1px solid var(--color-light-grey);
+}
+.calculate-table tbody td {
+  border-top: 1px solid var(--color-light-grey);
+}
+.calculate-table tbody tr:last-child td:first-child {
+  position: relative;
+}
+.calculate-table tbody tr:last-child td:first-child::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70.49%;
+  height: 1px;
+  background-color: var(--color-light-grey);
+}
+
+@media (width <= 1024px) {
+  .calculate {
+    padding: 100PX 0 100PX 0;
+  }
+  .calculate-inner {
+    gap: 0 20px;
+  }
+  .calculate-form__body {
+    grid-template-columns: 1fr;
+  }
+  .calculate-form__button {
+    width: 100%;
+  }
+  .calculate-table :is(td, th) {
+    padding: 10px 30px 10px 0;
+  }
+  .calculate-table tfoot td {
+    padding: 20px 0 20px 0;
+  }
+}
+@media (width <= 767px) {
+  .calculate {
+    padding: 60PX 0 60PX 0;
+  }
+  .calculate__table-wrapper::before {
+    display: none;
+  }
+  .calculate-inner {
+    gap: 20px 0;
+    flex-direction: column-reverse;
+  }
+}
+.footer {
+  color: var(--color-light);
+}
+.footer__main {
+  padding: 140px 0 160px 0;
+}
+.footer__header {
+  display: grid;
+  grid-template-columns: 20.77% auto;
+  gap: 0 62.5px;
+}
+.footer__header:not(:last-child) {
+  margin: 0 0 69px 0;
+}
+.footer__logo-image {
+  height: auto;
+}
+.footer__body {
+  gap: 0 62.5px;
+  display: grid;
+  grid-template-columns: 20.77% repeat(3, 1fr);
+}
+.footer__extra {
+  background-color: var(--color-dark-alternate);
+}
+.footer__extra-inner {
+  padding: 15px 0 15px 0;
+}
+.footer__copyright {
+  font-family: "Heebo", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-light);
+}
+
+.column {
+  font-weight: 300;
+  font-size: clamp(14px, 0.83vw, 16px);
+  line-height: 175%;
+  letter-spacing: 0.05em;
+}
+.column__title {
+  font-weight: 700;
+  font-size: clamp(18px, 1.14vw, 22px);
+  line-height: 1.73;
+  text-transform: uppercase;
+  margin: 0 0 15px 0;
+  position: relative;
+}
+.column__title.has-arrow::after {
+  display: inline-block;
+  content: "";
+  height: 0.74em;
+  aspect-ratio: 1;
+  background: url("/kropp-fitness/img/join-us/vector2.svg") center/contain no-repeat;
+  margin: 0 0 0 0.5em;
+  scale: -1 -1;
+}
+.column__schedule:not(:last-child) {
+  margin: 0 0 13px 0;
+}
+.column__address:not(:last-child) {
+  margin: 0 0 35px 0;
+}
+.column__subscribe {
+  position: relative;
+}
+.column__subscribe:not(:last-child) {
+  margin: 0 0 50px 0;
+}
+.column__subscribe-input {
+  border: var(--border);
+  padding: 0 60px 0 0;
+}
+.column__subscribe-input::-moz-placeholder {
+  padding: 0 0 0 27px;
+}
+.column__subscribe-input::placeholder {
+  padding: 0 0 0 27px;
+}
+.column__subscribe-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 50%;
+  background: url("/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg") center/70% no-repeat;
+}
+.column__subscribe-button:hover {
+  background-color: var(--color-light-grey);
+}
+.column__soc1als-list {
+  display: flex;
+  gap: 0 18.8px;
+}
+.column__soc1als-link {
+  display: flex;
+  width: 23px;
+}
+
+@media (width <= 1024px) {
+  .footer__main {
+    padding: 80px 0 50px 0;
+  }
+  .footer__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px 0;
+  }
+  .footer__body {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
+}
+@media (width <= 767px) {
+  .footer__main {
+    padding: 50px 0 30px 0;
+  }
+  .footer__header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px 0;
+  }
+  .footer__header:not(:last-child) {
+    margin: 0 0 30px 0;
+  }
+  .footer__body {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+  .column__subscribe:not(:last-child) {
+    margin: 0 0 30px 0;
+  }
+}

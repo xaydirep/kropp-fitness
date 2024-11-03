@@ -1,0 +1,1628 @@
+@import '_nullstyle';
+@font-face {
+	font-family: 'Heebo';
+	src: url('../fonts/Heebo-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Heebo';
+	src: url('../../fonts/Heebo-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Yantramanav';
+	src: url('../../fonts/Yantramanav-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root{
+	--color-dark: #000000;
+	--color-dark-alternate:#131619;
+	--color-light: #fff;
+	--color-dark-grey: #404040;
+	--color-light-grey: #C4C4C4;
+
+	--border-radius: 30px;
+	--border: 1px solid var(--color-light);
+	--font-family-base: 'Heebo', sans-serif;
+	--font-family-accent: 'Yantramanav', sans-serif;
+	--input-height: 54px;
+	--container-width: 1300px;
+	--container-padding-x: 15px;
+	--transition-duration: 0.2s;
+
+	--header-height: 90px;
+}
+
+body{
+	background-color: var(--color-dark);
+	font-family: var(--font-family-base);
+	color: var(--color-light-grey);
+	font-size: 16px;
+	line-height: 1.75;
+}
+
+.container{
+	max-width: calc(var(--container-width) + var(--container-padding-x) *2 );
+	margin: 0 auto;
+	padding-inline: var(--container-padding-x);
+}
+
+.container-wide{
+	max-width: 1920px;
+	margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--color-light);
+}
+a{
+	color: var(--color-light);
+}
+
+a:hover{
+	color: var(--color-light-grey)
+}
+
+a, button, input, textarea, svg * {
+	transition-duration: var(--transition-duration);
+}
+
+svg * {
+	transition-property: fill, stroke;
+}
+
+svg *[fill]{
+	fill: currentColor;
+}
+svg *[stroke]{
+	stroke: currentColor;
+}
+
+.button{
+	display: inline-flex;
+	height: 38px;
+	align-items: center;
+	border-radius: 30px;
+	padding: 0 26px 0 26px;
+	font-weight: 700;
+	line-height: 200%;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	background-color: var(--color-light);
+	white-space: nowrap;
+}
+.button:hover{
+	background-color: var(--color-light-grey);
+}
+
+.title-medium{
+	font-weight: 700;
+	font-size: clamp(20px, 2.08vw, 40px);
+	line-height: 130%;
+	text-transform: uppercase;
+	color: var(--color-light);
+}
+
+.section-description{
+	font-weight: 300;
+	font-size: clamp(14px, calc(20/1920*100vw), 20px);
+	line-height: 165%;
+	text-transform: uppercase;
+	color: var(--color-light);
+}
+.header {
+	background-color: var(--color-dark-alternate);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 20px;
+	padding: 0 32px 0 32px;
+	min-height: var(--header-height);
+	&__logo {
+		flex-shrink: 0;
+	}
+
+	&__logo-image {
+	}
+
+	&__menu {
+	}
+
+	&__menu-list {
+		display: flex;
+		column-gap: 50px;
+		flex-wrap: wrap;
+	}
+
+	&__menu-item {
+	}
+
+	&__menu-link {
+		display: inline-flex;
+		height: var(--header-height);
+		align-items: center;
+		font-weight: 700;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: 12px;
+		line-height: 150%;
+		letter-spacing: 0.1em;
+		column-gap: 7px;
+	}
+
+	&__actions {
+		display: flex;
+		gap: 0 40px;
+	}
+
+	&__book-button {
+	}
+
+	&__burger-button {
+		display: inline-flex;
+		flex-direction:column;
+		justify-content: center;
+		row-gap: 4px;
+		width: 40px;
+		aspect-ratio: 1;
+		padding: 0 0 0 8px;
+		color: var(--color-light);
+		background-color: var(--color-dark);
+		border: var(--border);
+		border-radius: 50%;
+	}
+	&__burger-button:hover{
+		border-color: var(--color-light-grey);
+		color: var(--color-light-grey);
+	}
+	&__burger-button-line{
+		top: 5px;
+		left: 5px;
+		width: 5.5px;
+		height: 1px;
+		background-color: currentColor;
+		box-shadow: 16px 0 0 var(--color-light);
+	}
+}
+.is-current::after {
+	content: '';
+	height: 5px;
+	aspect-ratio: 1;
+	background-color: var(--color-light);
+	border-radius: 50%;
+}
+
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+ }
+
+ .content {
+
+	&__banner {
+	}
+}
+.banner {
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	padding: 36px 70px;
+	min-height: calc(100vh - var(--header-height));
+	color: var(--color-light);
+	background-color: var(--color-dark-alternate);
+
+	&__body {
+		text-transform: uppercase;
+	}
+
+	&__info {
+	display: flex;
+	align-items: end;
+	font-weight: 700;
+	font-size: clamp(16px, 1.56vw, 30px);
+	line-height: 127%;
+	}
+
+	&__info::before {
+		content: '';
+		width: clamp(60px, 194px, 10.1vw);
+		aspect-ratio: 1;
+		margin: 0 30px 0 0;
+		background: url('/kropp-fitness/img/arrow-light.svg') center/contain no-repeat;
+		}	
+	&__title {
+		font-weight: 700;
+		font-size: min(18.75vw, 360px);
+		line-height: 1;
+	}
+
+	&__pagination {
+	}
+
+	&__pagination-list {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__pagination-item {
+	}
+
+	&__pagination-btn {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		background-color: transparent;
+		border: none;
+		padding: 7px;
+	}
+	&__pagination-btn::after {
+		content: '';
+		border-radius: 50%;
+		border: var(--border);
+		width: 10px;
+		height: 10px;
+		padding: 0;
+		transition-duration: var(--transition-duration);
+	}
+	&__pagination-btn:not(.btn-light):hover::after{
+		border-color: var(--color-light-grey);
+	}
+}
+
+.btn-light::after{
+	background-color: var(--color-light);
+	border-radius: 50%;
+}
+
+
+@media (max-width: 1024px) {
+
+	.header {
+		padding: 20px 15px 0 15px;
+		flex-wrap: wrap;
+		row-gap: 10px;
+		&__logo {
+		}
+
+		&__logo-image {
+		}
+
+		&__menu {
+			order: 1;
+			flex-basis: 100%;
+		}
+
+		&__menu-list {
+			
+		}
+
+		&__menu-item {
+		}
+
+		&__menu-link {
+			height: 50px;
+		}
+
+		&__actions {
+		}
+
+		&__book-button {
+		}
+
+		&__burger-button {
+		}
+
+		&__burger-button-line {
+		}
+		
+}
+.is-current {
+}
+.content {
+
+		&__banner {
+		}
+}
+.banner {
+	row-gap: 20px;
+	padding: 36px 15px;
+		&__body {
+		}
+
+		&__info {
+		}
+
+		&__title {
+		}
+
+		&__pagination {
+		}
+
+		&__pagination-list {
+		}
+
+		&__pagination-item {
+		}
+
+		&__pagination-btn {
+		}
+}
+.visually-hidden {
+}
+.btn-light {
+}
+
+.content {
+
+	&__banner {
+	}
+}
+.visually-hidden {
+}
+.banner {
+
+	&__body {
+	}
+
+	&__info {
+	}
+
+	&__title {
+	}
+
+	&__pagination {
+	}
+
+	&__pagination-list {
+	}
+
+	&__pagination-item {
+	}
+
+	&__pagination-btn {
+	}
+}
+.btn-light {
+}
+
+
+
+}
+
+@media (max-width: 767px) {
+	.button{
+		padding: 0 18px 0 18px;
+	}
+	.header {
+		padding: 10px 10px 0 10px;
+		&__logo {
+		}
+
+		&__logo-image {
+		}
+
+		&__menu {
+		}
+
+		&__menu-list {
+			column-gap: 24px;
+		}
+
+		&__menu-item {
+		}
+
+		&__menu-link {
+			height: 32px;
+		}
+
+		&__actions {
+			column-gap: 15px;
+		}
+
+		&__book-button {
+		}
+
+		&__burger-button {
+		}
+
+		&__burger-button-line {
+		}
+}
+.is-current {
+}
+
+.content {
+
+	&__banner {
+	}
+}
+.visually-hidden {
+}
+.banner {
+
+	&__body {
+	}
+
+	&__info {
+		margin: 0 0 5px 0;
+	}
+	&__info::before {
+		margin: 0 10px 0px 0;
+	}
+
+	&__title {
+
+	}
+
+	&__pagination {
+	}
+
+	&__pagination-list {
+	}
+
+	&__pagination-item {
+	}
+
+	&__pagination-btn {
+	}
+}
+.btn-light {
+}
+
+}
+
+.motivation {
+
+	&__list {
+	}
+
+	&__item {
+	}
+	&__item:nth-child(even) {
+		background-color: var(--color-dark-alternate);
+
+	}
+	&__item:nth-child(even) .motivation-card {
+		flex-direction: row-reverse;
+	}
+}
+
+
+.visually-hidden {
+}
+.motivation-card {
+
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 0 clamp(30px, 10.42vw, 200px);
+	&__body {
+		padding: 0 0 0 35px;
+	}
+
+	&__title {
+		margin: 0 0 13px 0;
+	}
+
+	&__description {
+		max-width: 400px;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 175%;
+		letter-spacing: 0.05em;
+		color: #c4c4c4;
+		margin: 0 0 35px 0;
+	}
+
+	&__button {
+	
+	}
+
+	&__image {
+		margin-block: -60px -60px;
+	}
+	&__image-last{
+		margin-block: -60px 0px;
+	}
+}
+
+.transparent {
+	position: relative;
+	height: 54px;
+	display: inline-flex;
+	font-size: 13px;
+	background-color: transparent;
+	padding: 0 80px 0 30px;
+	color: var(--color-light);
+	border: var(--border);
+	&::after{
+		content: '';
+		right: 0;
+		top: 0;
+		background: url('/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg') center/70% no-repeat;
+		position: absolute;
+		height: 100%;
+		aspect-ratio: 1;
+		border: var(--border);
+		border-radius: 50%;
+	}
+	&:hover{
+		color: var(--color-dark);
+		background-color: var(--color-light-grey);
+	}
+}
+.container {
+}
+.backdrop-title {
+	position: relative;
+	z-index: 2;
+	&::before{
+		content: '';
+		position: absolute;
+		right: calc(100% + 8px);
+		display: block;
+		width: 26px;
+		aspect-ratio: 1;
+		background: url('/kropp-fitness/img/motivation/plus.svg') center/contain no-repeat;
+	}
+	&::after{
+		content: attr(data-title);
+		position: absolute;
+		z-index: -1;
+		font-family: "Yantramanav", sans-serif;
+		font-weight: 700;
+		font-size: 2.8em;
+		color: transparent;
+		top: -0.3em;
+    	left: -0.6em;
+		-webkit-text-stroke: 1px var(--color-dark-grey);
+		text-stroke: 1px var(--color-dark-grey);
+		line-height: 1;
+	}
+}
+
+
+.button {
+}
+
+@media (max-width: 1919px ) {
+	.motivation-card__image{
+		margin-block: -20px;
+	}
+}
+
+@media (max-width: 1024px){
+	.motivation {
+
+		&__list {
+		}
+
+		&__item {
+		}
+}
+.visually-hidden {
+}
+.motivation-card {
+	padding-block: 50px;
+		&__body {
+		}
+
+		&__tittle {
+		}
+
+		&__description {
+		}
+
+		&__button {
+		}
+
+		&__image {
+			max-width: 50%;
+			height: auto;
+			margin-block: 0px;
+		}
+
+		&__title {
+		}
+
+		&__image-last {
+		}
+}
+.container {
+}
+.backdrop-title {
+}
+
+.button {
+}
+.transparent {
+}
+
+}
+
+@media (max-width: 767px){
+	.motivation {
+
+		&__list {
+		}
+
+		&__item {
+		}
+}
+.motivation__item:nth-child(even) .motivation-card {
+	flex-direction: column-reverse;
+}
+.visually-hidden {
+}
+.motivation-card, .motivation__item:nth-child(even) .motivation-card  {
+	flex-direction: column-reverse;
+	padding: 30px 0;
+	gap: 30px 0 ;
+		&__body {
+		}
+
+		&__tittle {
+		}
+
+		&__description {
+			margin: 0 0 20px 0;
+		}
+
+		&__button {
+		}
+
+		&__image {
+			max-width: 60%;
+		}
+
+		&__title {
+		}
+
+		&__image-last {
+		}
+}
+
+
+}
+
+
+
+.training-types {
+	padding: 160px 90px 120px 90px;
+	position: relative;
+	background-color: var(--color-dark);
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: 60px;
+	}
+
+	&__item {
+		--trainingTypesItemBgIconSize: 80px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 32px 0px;
+		background: url('/kropp-fitness/img/training-types/arrow.svg') 100% 0/var(--trainingTypesItemBgIconSize) no-repeat;
+		padding: var(--trainingTypesItemBgIconSize) 0 0 0;
+	}
+
+	&__image {
+	}
+
+	&__title {
+		font-size: 16px;
+		line-height: 175%;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+}
+
+@media (max-width: 1280px){
+	.training-types {
+
+		&__list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		&__item {
+		}
+
+		&__image {
+		}
+
+		&__title {
+		}
+}
+.visually-hidden {
+}
+
+}
+
+@media(max-width: 767px) {
+	.training-types {
+		padding: 100px 50px 100px 50px;
+		&__list {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 30px;
+		}
+
+		&__item {
+			gap: 20px 0;
+		--trainingTypesItemBgIconSize: 50px;
+		}
+
+		&__image {
+			max-width: 120px;
+		}
+
+		&__title {
+		}
+}
+}
+
+.join-us {
+background-color: var(--color-dark-alternate);
+	&__video-wrapper {
+		background: url('/kropp-fitness/img/join-us/join-us-background.jpg') center/cover no-repeat var(--color-dark-alternate) ;
+		padding: 7.8vw 25vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+
+	&__video {
+		width: 960px;
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__video-play-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		translate: -50% -50%;
+		width: clamp(50px, 10.41vw, 200px);
+		aspect-ratio: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0px 4px;
+		border-radius: 50%;
+		border: var(--border);
+		background-color: transparent;
+		font-weight: 700;
+		font-size: 14px;
+		color: var(--color-light);
+		text-transform: uppercase;
+		&::after{
+			content: '';
+			width: 26px;
+			aspect-ratio: 1;
+			background: url('/kropp-fitness/img/join-us/join-arrow.svg') center/contain no-repeat;
+			transition-duration: var(--transition-duration);
+		}
+		&:hover{
+			background-color: var(--color-light-grey);
+			color:var(--color-dark);
+		}
+		&:hover::after{
+			filter: invert(1);
+		}
+	}
+
+	&__body {
+	}
+
+	&__title {
+		position: relative;
+	margin: -0.4em 0 130px 0;
+	font-size: clamp(64px, 9.37vw, 180px);
+	line-height: 1;
+	text-transform: uppercase;
+	text-align: center;
+		&::after{
+			display: inline-block;
+			content: '';
+			height: 0.7em;
+			aspect-ratio: 1;
+			background: url('/kropp-fitness/img/join-us/vector2.svg') center/contain no-repeat;
+			margin: 0 0 0 0.14em;
+		}
+	}
+
+	&__form {
+		padding: 0 0 150px 0;
+	}
+
+	&__form-header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 7px 0;
+		&:not(:last-child){
+			margin: 0 0 52px 0;
+		}
+	}
+
+	&__form-title {
+	}
+
+	&__form-subtitle {
+	}
+
+	&__form-body {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0 20px;
+	}
+
+	&__form-input {
+		max-width: 400px;
+	}
+
+	&__form-button {
+		&.transparent {
+			position: relative;
+			height: 54px;
+			display: inline-flex;
+			font-size: 13px;
+			background-color: transparent;
+			padding: 0 80px 0 30px;
+			color: var(--color-light);
+			border: var(--border);
+			&::after{
+				content: '';
+				right: 0;
+				top: 0;
+				background: url('/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg') center/70% no-repeat;
+				position: absolute;
+				height: 100%;
+				aspect-ratio: 1;
+				border: var(--border);
+				border-radius: 50%;
+			}
+			&:hover{
+				color: var(--color-dark);
+				background-color: var(--color-light-grey);
+			}
+		}
+	}
+}
+
+.title-big{
+	font-weight: 700;
+	font-size: clamp(24px, 3.12vw, 60px);
+	line-height: 120%;
+	text-transform: uppercase;
+}
+
+.backdrop-title{
+	&.centered::after{
+		left: 50%;
+		translate: -50% 0;
+		top: -0.25em;
+	}
+}
+.input {
+	background-color: transparent;
+	border: 1px solid var(--color-dark-grey);
+	border-radius: var(--border-radius);
+	height: var(--input-height);
+	padding: 0 25px;
+	width: 100%;
+	color:var(--color-light);
+	&::placeholder{
+		color: var(--color-light-grey);
+	}
+	&:hover{
+		border-color: var(--color-light) ;
+	}
+	&:focus{
+		background-color: var(--color-light-grey);
+		color: var(--color-dark);
+		outline: none;
+	}
+}
+
+select.input:invalid{
+	color: var(--color-light-grey);
+}
+.button {
+}
+.transparent {
+}
+
+@media (width <= 1024px) {
+	.join-us__form{
+		padding: 0 0 80px 0;
+	}
+	.join-us__title{
+		margin: -0.4em 0 80px 0;
+	}
+}
+
+@media (width <= 767px){
+	.join-us__title{
+		margin: -0.4em 0 40px 0;
+	}
+	.join-us__form-body{
+		flex-direction: column;
+		gap: 20px 0;
+	}
+}
+
+
+
+.location {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	&__image {
+		height: auto;
+	}
+
+	&__body {
+		padding: 80px 15px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&__title {
+		text-align: center;
+		&:not(:last-child){
+			margin: 0 0 14px 0;
+		}
+	}
+
+	&__desctiption {
+		text-align: center;
+		max-width: 490px;
+		&:not(:last-child){
+			margin: 0 0 clamp(20px ,1.92vw ,37px) 0;
+		}
+	}
+
+	&__btn {
+	}
+}
+
+@media (width <= 1024px){
+	.location {
+		display: flex;
+		flex-direction: column-reverse;
+		&__image {
+		}
+
+		&__body {
+		}
+
+		&__title {
+		}
+
+		&__desctiption {
+			
+		}
+
+		&__btn {
+		}
+}
+
+}
+
+@media (width <= 767px){
+	.location {
+		&__image {
+		}
+
+		&__body {
+			padding: 40px 15px;
+		}
+
+		&__title {
+		}
+
+		&__desctiption {
+		}
+
+		&__btn {
+		}
+}
+}
+
+.family {
+	background-color: var(--color-dark-alternate);
+	&__header {
+		padding: 132px 0 62px 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		gap: 7px 0;
+	}
+
+	&__title {
+
+	}
+
+	&__description {
+	}
+
+	&__body {
+		display: flex;
+		justify-content: center;
+		gap: 0 26px;
+		scroll-snap-type: x mandatory;
+		overflow-x: scroll;
+	}
+
+	&__image {
+		scroll-snap-align: start;
+	}
+}
+
+
+@media (width <= 1024px){
+	.family {
+
+		&__header {
+		}
+
+		&__title {
+		}
+
+		&__description {
+		}
+
+		&__body {
+		}
+
+		&__image {
+			height: 360px;
+		}
+}
+
+}
+
+
+@media (width <= 767px){
+	.family {
+
+		&__header {
+			padding: 80px 0 50px 0;
+		}
+
+		&__title {
+		}
+
+		&__description {
+		}
+
+		&__body {
+			gap: 0 12px;
+		}
+
+		&__image {
+			height: 180px;
+		}
+}
+}
+
+
+.calculate {
+	background-color: var(--color-dark-alternate);
+	padding: 146PX 0 146PX 0;
+	&__body {
+		max-width: 627px;
+		flex-grow: 1;
+	}
+
+	&__title {
+		&:not(:last-child){
+			margin: 0 0 16px 0;
+		}
+	}
+
+	&__description {
+		&:not(:last-child){
+			margin: 0 0 31px 0;
+		}
+		max-width: 385px;
+font-weight: 300;
+font-size:16px;
+line-height: 175%;
+letter-spacing: 0.05em;
+color: var(--color-light-grey);
+	}
+
+	&__form {
+	}
+
+	&__table-wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 610px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&::before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			translate: -50% -50%;
+			width: 100%;
+			aspect-ratio: 1;
+			background-color: var(--color-dark);
+			border-radius:  50%;
+		}
+	}
+}
+.calculate-inner {
+	display: flex;
+	align-items: center;
+	gap: 0 36px;
+}
+.section-description {
+}
+.calculate-form {
+
+	&__body {
+		&:not(:last-child){
+			margin: 0 0 26px 0;
+		}
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 18px 30px;
+	}
+
+	&__input {
+		&.wide{
+			grid-column: -1 / 1;
+		}
+	}
+
+	&__button {
+	}
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.calculate-table {
+	position: relative;
+	border-collapse: collapse;
+		& th{padding: 21px 30px 17px 0;
+	text-align-last: left;
+	text-transform: uppercase;
+	color: var(--color-light);
+			&:not(:first-child){
+				padding: 14px 30px 14px 30px;
+			}
+	}
+		& td{
+			padding: 14px 30px 14px 0;
+			&:not(:first-child){
+				padding: 14px 30px 14px 30px;
+			}
+		}
+		& tfoot td{
+			padding: 33px 0 30px 0;
+			color: var(--color-light);
+		}
+		& :is(td, th):not(:last-child){
+			border-right: 1px solid var(--color-light-grey);
+		}
+		& tbody td{
+			border-top: 1px solid var(--color-light-grey);
+		}
+
+		& tbody tr:last-child td:first-child{
+			position: relative;
+		}
+		& tbody tr:last-child td:first-child::after{
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 70.49%;
+			height: 1px;
+			background-color: var(--color-light-grey);
+		}
+}
+
+
+@media (width <= 1024px){
+.calculate {
+	padding: 100PX 0 100PX 0;
+	&__body {
+	}
+
+	&__title {
+	}
+
+	&__description {
+	}
+
+	&__form {
+	}
+
+	&__table-wrapper {
+	}
+}
+.calculate-inner {
+	gap: 0 20px;
+}
+.container {
+}
+.title-medium {
+}
+.backdrop-title {
+}
+.calculate-form {
+
+	&__body {
+		grid-template-columns: 1fr;
+	}
+
+	&__input {
+	}
+
+	&__button {
+		width: 100%;
+	}
+}
+.wide {
+}
+
+.calculate-table {
+	& :is(td, th){
+		padding: 10px 30px 10px 0;
+	}
+	& tfoot td{
+		padding: 20px 0 20px 0;
+	}
+}
+}
+
+
+@media (width <= 767px){
+	.calculate {
+		padding: 60PX 0 60PX 0;
+		&__body {
+		}
+	
+		&__title {
+		}
+	
+		&__description {
+		}
+	
+		&__form {
+		}
+	
+		&__table-wrapper {
+			&::before{
+				display: none;
+			}
+		}
+	}
+	.calculate-inner {
+		gap: 20px 0;
+		flex-direction: column-reverse;
+	}
+	.container {
+	}
+	.title-medium {
+	}
+	.backdrop-title {
+	}
+	.calculate-form {
+	
+		&__body {
+		}
+	
+		&__input {
+		}
+	
+		&__button {
+
+		}
+	}
+	.wide {
+	}
+	
+}
+
+.footer {
+	color: var(--color-light);
+	&__main {
+		padding: 140px 0 160px 0;
+	}
+
+	&__main-inner {
+	}
+
+	&__header {
+		display: grid;
+		grid-template-columns: 20.77% auto;
+		gap: 0 62.5px;
+		&:not(:last-child){
+			margin: 0 0 69px 0;
+		}
+	}
+
+	&__logo {
+	}
+
+	&__logo-image {
+		height: auto;
+	}
+
+	&__description {
+	}
+
+	&__body {
+		gap: 0 62.5px;
+		display: grid;
+		grid-template-columns: 20.77% repeat(3, 1fr);
+	}
+
+	&__column {
+	}
+
+	&__extra {
+		background-color: var(--color-dark-alternate);
+	}
+
+	&__extra-inner {
+		padding: 15px 0 15px 0;
+	}
+
+	&__copyright {
+		font-family: "Heebo", sans-serif;
+		font-weight: 300;
+		font-size: 14px;
+		line-height: 2;
+		color: var(--color-light);
+	}
+}
+.container {
+}
+.column {
+		font-weight: 300;
+		font-size: clamp(14px, 0.83vw, 16px);
+		line-height: 175%;
+		letter-spacing: 0.05em;
+	&__title {
+		font-weight: 700;
+		font-size: clamp(18px, 1.14vw, 22px);
+		line-height: 1.73;
+		text-transform: uppercase;
+		margin: 0 0 15px 0;
+		position: relative;
+		&.has-arrow::after{
+			display: inline-block;
+			content: '';
+			height: 0.74em;
+			aspect-ratio: 1;
+			background: url('/kropp-fitness/img/join-us/vector2.svg') center/contain no-repeat;
+			margin: 0 0 0 0.5em;
+			scale: -1 -1;
+		}
+	}
+
+	&__about {
+	}
+
+	&__schedule {
+		&:not(:last-child){
+			margin: 0 0 13px 0;
+		}
+	}
+
+	&__address {
+		&:not(:last-child){
+			margin: 0 0 35px 0;
+		}
+	}
+
+	&__contacts {
+	}
+
+	&__contacts-list {
+	}
+
+	&__contacts-item {
+	}
+
+	&__contacts-link {
+	}
+
+	&__subscribe {
+		position: relative;
+		&:not(:last-child){
+			margin: 0 0 50px 0;
+		}
+
+	}
+
+	&__subscribe-input {
+		border: var(--border);
+		padding: 0 60px 0 0;
+		&::placeholder{
+			padding: 0 0 0 27px;
+		}
+	}
+
+	&__subscribe-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		aspect-ratio: 1;
+		background-color: transparent;
+		border: var(--border);
+		border-radius: 50%;
+		background: url('/kropp-fitness/img/button/svg.qodef-svg--button-arrow.svg') center / 70% no-repeat;
+		&:hover{
+			background-color: var(--color-light-grey);
+		}
+	}
+
+	&__soc1als {
+	}
+
+	&__soc1als-list {
+		display: flex;
+		gap: 0 18.8px;
+	}
+
+	&__soc1als-item {
+	}
+
+	&__soc1als-link {
+		display: flex;
+		width: 23px;
+	}
+}
+.has-arrow {
+
+}
+.cls-1 {
+}
+
+
+@media (width <= 1024px){
+	.footer {
+
+		&__main {
+			padding: 80px 0 50px 0;
+		}
+
+		&__main-inner {
+		}
+
+		&__header {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			gap: 30px 0;
+		}
+
+
+		&__body {
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 30px;
+		}
+}
+
+}
+
+@media (width <= 767px){
+	.footer {
+
+		&__main {
+			padding: 50px 0 30px 0;
+		}
+
+		&__main-inner {
+		}
+
+		&__header {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			gap: 30px 0;
+			&:not(:last-child){
+				margin: 0 0 30px 0;
+			}
+		}
+
+
+		&__body {
+			grid-template-columns: 1fr;
+			row-gap: 30px;
+		}
+}
+
+.footer {
+
+	&__column {
+
+	}
+}
+.column {
+
+	&__title {
+	}
+
+	&__subscribe {
+		&:not(:last-child){
+			margin: 0 0 30px 0;
+		}
+	}
+
+	&__subscribe-input {
+	}
+
+	&__subscribe-button {
+	}
+
+	&__soc1als {
+	}
+
+	&__soc1als-list {
+	}
+
+	&__soc1als-item {
+	}
+
+	&__soc1als-link {
+	}
+}
+
+}
